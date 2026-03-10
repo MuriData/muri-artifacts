@@ -5,18 +5,20 @@ Generated Groth16 artifacts for MuriData's zero-knowledge proof system.
 These files are produced by [`muri-zkproof`](https://github.com/MuriData/muri-zkproof) and consumed by:
 
 - **muri-contracts** — imports verifier contracts (e.g. `poi/poi_verifier.sol`) as a Foundry submodule.
-- **muri-node** / prover infrastructure — uses proving and verifying keys for proof generation and off-chain verification.
+- **muri-node** / prover infrastructure — uses proving and verifying keys for standard PoI proof generation and off-chain verification.
 
 ## Structure
 
-Artifacts are organized per-circuit:
+Artifacts are organized per-circuit. Core circuits include Standard PoI, FSP (File Size Proof), and Key Leak:
 
-```
+```text
 muri-artifacts/
 ├── poi/
 │   ├── poi_verifier.sol      # Solidity Groth16 verifier contract (~26 KB)
 │   ├── poi_verifier.key      # Verifying key, public (~492 B, Git LFS)
 │   └── poi_prover.key        # Proving key, keep private in prod (~65 MB, Git LFS)
+├── fsp/                      # File Size Proof verifier artifacts
+├── keyleak/                  # Key Leak PLONK verifier artifacts
 └── .gitattributes            # *.key filter=lfs
 ```
 
